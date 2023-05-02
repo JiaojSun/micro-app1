@@ -8,7 +8,7 @@ import { add } from "app2/utils";
 
 
 const RemoteButton = React.lazy(() => import('app2/Button'));
-// const add = React.lazy(() => import('app2/utils'));
+// 1const add = React.lazy(() => import('app2/utils'));
 
 
 
