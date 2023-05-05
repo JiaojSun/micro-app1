@@ -1,23 +1,15 @@
-import React, {useState, useEffect} from 'react';
-import { HTML5Backend } from 'react-dnd-html5-backend'
-import { DndProvider } from 'react-dnd'
+import React, { useState, useEffect } from 'react';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useDrop } from 'react-dnd';
-import { add } from "app2/utils";
-// import add from 'app2/utils';
-// import 'app_05/components';
-
+import { add } from 'app2/utils';
 
 const RemoteButton = React.lazy(() => import('app2/Button'));
-// 1const add = React.lazy(() => import('app2/utils'));
-
-
 
 const App = () => {
   const type = 'tool1';
   const [app2Data, setApp2Data] = useState('');
 
   function handleChange(item) {
-    // alert(item);
     setApp2Data(item);
   }
 
@@ -49,7 +41,7 @@ const App = () => {
         return item.type === type;
         // return false
       },
-      collect: (monitor) => ({
+      collect: monitor => ({
         isOver: !!monitor.isOver(),
         canDrop: !!monitor.canDrop(),
       }),
@@ -58,35 +50,29 @@ const App = () => {
   );
 
   useEffect(() => {
-    // console.log(add);
-
-    // const ret = add(4,5);
-    // console.log('add function========='+ret);
-    alert(add(5,5));
+    alert(`调用remote子模块的函数` + add(5, 5));
   }, []);
 
-
   return (
-    // <DndProvider backend={HTML5Backend}>
-      <div style={{width: '100%',
+    <div
+      style={{
+        width: '100%',
         height: '100vh',
         border: '4px solid grey',
-        // backgroundColor: canDrop ? 'rgba(7,193,96,0.3)' : '' ,
-        // background: 'green',
         display: 'flex',
-        // position: 'absolute',
-        }}
-        ref={drop}>
-        <div>
-          <h1>这是app1的内容【host】</h1><br />
-          <div>{app2Data}</div>
-        </div>
-        <React.Suspense fallback="Loading Button">
-          <RemoteButton HTML5Backend={HTML5Backend} data={'1'} handleChange={handleChange} />
-        </React.Suspense>
+      }}
+      ref={drop}
+    >
+      <div>
+        <h1>这是app1的内容【host】</h1>
+        <br />
+        <div>{app2Data}</div>
       </div>
-    //  </DndProvider>
-    )
+      <React.Suspense fallback="Loading Button">
+        <RemoteButton HTML5Backend={HTML5Backend} data={'1'} handleChange={handleChange} />
+      </React.Suspense>
+    </div>
+  );
 };
 
 export default App;

@@ -23,6 +23,7 @@
     "@babel/preset-env": "^7.21.4",
     "@babel/preset-typescript": "^7.21.4",
     "css-loader": "^6.7.3",
+    "prettier": "^2.8.8",
     "react": "^16.13.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
